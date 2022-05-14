@@ -1,24 +1,46 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Route, BrowserRouter, Routes } from "react-router-dom";
 import './App.css';
+import LoginPage from "./components/pages/LoginPage/LoginPage";
+import PrivateRoute from "./components/PrivateRoute";
+import {ThemeProvider, Typography} from "@material-ui/core";
+import {createTheme} from "@material-ui/core/styles";
+import MicroservicePage
+  from "./components/pages/microservices/MicroservicePage";
+import Users from "./components/pages/microservices/Users/Users";
 
 function App() {
+
+  const globalTheme = React.useMemo(
+      () => createTheme({
+        palette: {
+          primary: {
+            main: "#1db954",
+          },
+          secondary: {
+            main: "#5dff95",
+          },
+          type: 'dark',
+        },
+      }), []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <BrowserRouter>
+        <ThemeProvider theme={globalTheme}>
+          <Routes>
+            <Route exact path="/login"
+                   element={<LoginPage />}
+            />
+            <Route element={<PrivateRoute/>}>
+              <Route exact path="/" element={<MicroservicePage/>}>
+                <Route exact path="/users" element={<Users/>}/>
+                <Route exact path="/songs" element={<Users/>}/>
+              </Route>
+            </Route>
+
+          </Routes>
+        </ThemeProvider>
+      </BrowserRouter>
   );
 }
 
