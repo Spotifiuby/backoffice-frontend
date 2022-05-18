@@ -1,46 +1,28 @@
-import React, {useEffect, useState} from "react";
-import clsx from 'clsx';
+import React from "react";
 import styles from "./styles";
 import {
-  AppBar, Badge,
+  AppBar,
   CssBaseline,
-  Divider,
-  Drawer, FormControl,
-  IconButton, InputLabel, List, ListItem, ListItemIcon, ListItemText,
-  makeStyles, Menu, MenuItem, Select,
+  Drawer,
+  IconButton, List, ListItem, ListItemIcon, ListItemText,
+  makeStyles, Menu, MenuItem,
   Toolbar,
-  Typography, useTheme
 } from "@material-ui/core";
-import {createTheme, ThemeProvider} from "@material-ui/core/styles";
-import {useMediaQuery} from "@material-ui/core";
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import {AccountCircle} from "@material-ui/icons";
 import {Link, Outlet} from "react-router-dom";
 import ContextMenuOptions from "./ContextMenuOptions.json";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import {authenticationService} from "../../../services/AuthenticationService";
 
 const useStyles = makeStyles(styles);
 
 const MicroservicePage = () => {
   const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const menuId = 'primary-search-account-menu';
   const isMenuOpen = Boolean(anchorEl);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -60,7 +42,7 @@ const MicroservicePage = () => {
           open={isMenuOpen}
           onClose={handleMenuClose}
       >
-        <MenuItem onClick={handleMenuClose}>Cerrar sesion</MenuItem>
+        <MenuItem onClick={() => authenticationService.logout()}>Cerrar sesion</MenuItem>
       </Menu>
   );
 
@@ -81,20 +63,9 @@ const MicroservicePage = () => {
           <CssBaseline />
           <AppBar
               position="fixed"
-              className={clsx(classes.appBar, {
-                [classes.appBarShift]: open,
-              })}
+              className={classes.appBar}
           >
             <Toolbar>
-              <IconButton
-                  color="inherit"
-                  aria-label="open drawer"
-                  onClick={handleDrawerOpen}
-                  edge="start"
-                  className={clsx(classes.menuButton, { [classes.hide]: open })}
-              >
-                <MenuIcon />
-              </IconButton>
               <div className={classes.grow} />
               <div className={classes.sectionDesktop}>
                 <IconButton
@@ -112,26 +83,17 @@ const MicroservicePage = () => {
           </AppBar>
           <Drawer
               className={classes.drawer}
-              variant="persistent"
+              variant="permanent"
               anchor="left"
-              open={open}
               classes={{
                 paper: classes.drawerPaper,
               }}
           >
-            <div className={classes.drawerHeader}>
-              <div className={classes.grow} />
-              <IconButton onClick={handleDrawerClose}>
-                {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-              </IconButton>
-            </div>
-            <Divider />
+            <Toolbar />
             {menu()}
           </Drawer>
           <main
-              className={clsx(classes.content, {
-                [classes.contentShift]: open,
-              })}
+              className={classes.content}
           >
             <div className={classes.drawerHeader} />
             <Outlet />

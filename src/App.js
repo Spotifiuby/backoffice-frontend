@@ -3,11 +3,12 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import './App.css';
 import LoginPage from "./components/pages/LoginPage/LoginPage";
 import PrivateRoute from "./components/PrivateRoute";
-import {ThemeProvider, Typography} from "@material-ui/core";
+import {ThemeProvider} from "@material-ui/core";
 import {createTheme} from "@material-ui/core/styles";
 import MicroservicePage
   from "./components/pages/microservices/MicroservicePage";
 import Users from "./components/pages/microservices/Users/Users";
+import Songs from "./components/pages/microservices/Songs/Songs";
 
 function App() {
 
@@ -34,7 +35,7 @@ function App() {
             <Route element={<PrivateRoute/>}>
               <Route exact path="/" element={<MicroservicePage/>}>
                 <Route exact path="/users" element={<Users/>}/>
-                <Route exact path="/songs" element={<Users/>}/>
+                <Route exact path="/songs" element={<Songs/>}/>
               </Route>
             </Route>
 

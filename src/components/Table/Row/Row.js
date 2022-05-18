@@ -46,7 +46,7 @@ const Row = ({row, columns, expandable}) => {
       } else if (column.type && column.type === 'image') {
         return <img alt="complex" src={value ? value : '/defualtUserProfilePicture.png'} style={{ maxWidth: column.maxWidth }} className={classes.img}/>;
       } else {
-        return value;
+        return `${value}`;
       }
     }
   }

@@ -22,7 +22,7 @@ const LoginPage = () => {
   const [errors, setErrors] = useState({});
   const [showLoading, setShowLoading] = React.useState(true);
   const [showError, setShowError] = React.useState(false);
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
 
   useEffect(() => {
     if (loading) {
@@ -46,7 +46,8 @@ const LoginPage = () => {
       authenticationService.isValidSession()
       .then(response => {
         if (response.ok) {
-          history('/');
+          const { from } = window.location.state || { from: { pathname: "/" } };
+          history(from);
         }
       }).catch(err => {
         if ([401, 403].indexOf(err.status) !== -1) {

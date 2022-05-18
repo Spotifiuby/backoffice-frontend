@@ -1,12 +1,12 @@
 [
   {
-    "id": "songs",
-    "label": "Canciones",
-    "path": "songs"
-  },
-  {
     "id": "users",
     "label": "Usuarios",
     "path": "users"
+  },
+  {
+    "id": "songs",
+    "label": "Canciones",
+    "path": "songs"
   }
 ]

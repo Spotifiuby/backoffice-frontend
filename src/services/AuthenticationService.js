@@ -2,6 +2,7 @@ import { BehaviorSubject } from 'rxjs';
 
 import { handleResponse } from '../helpers/HandleResponse';
 import superagent from 'superagent';
+import { logoutFirebase } from "../firebase";
 
 const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
 
@@ -46,4 +47,6 @@ function logout() {
   // remove user from local storage to log user out
   localStorage.removeItem('currentUser');
   currentUserSubject.next(null);
+  logoutFirebase();
+  window.location.reload();
 }

@@ -48,6 +48,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../api-gateway/proxy.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../api-gateway/routes/routes.js">
           <value>
             <set />
@@ -93,6 +98,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/components/Table/Row/Row.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/components/pages/LoginPage/LoginPage.js">
           <value>
             <set />
@@ -113,6 +123,26 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/components/pages/microservices/Songs/Songs.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/components/pages/microservices/Songs/Users.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/components/pages/microservices/Users/NewUserModal/UserModal.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/components/pages/microservices/Users/Songs.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/components/pages/microservices/Users/Users.js">
           <value>
             <set />
@@ -123,7 +153,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/components/pages/microservices/styles.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/firebase.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/helpers/HandleResponse.js">
           <value>
             <set />
           </value>
@@ -134,6 +174,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/services/AuthenticationService.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/services/SongsService.js">
           <value>
             <set />
           </value>

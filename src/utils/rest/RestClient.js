@@ -7,7 +7,7 @@ function get(path, opts) {
     .get(path)
     .set("Accept", "application/json")
     .auth(opts && opts.auth && authenticationService.currentUserValue.token, { type:'bearer' })
-    .then(handleResponse);
+    .on('error', handleResponse);
 }
 
 function post(path, opts) {
@@ -16,7 +16,7 @@ function post(path, opts) {
     .set("Accept", "application/json")
     .set('Content-Type', 'application/json')
     .auth(opts && opts.auth && authenticationService.currentUserValue.token, { type:'bearer' })
-    .then(handleResponse);
+    .on('error', handleResponse);
 }
 
 function put(path, opts) {
@@ -25,7 +25,7 @@ function put(path, opts) {
     .set("Accept", "application/json")
     .set('Content-Type', 'application/json')
     .auth(opts && opts.auth && authenticationService.currentUserValue.token, { type:'bearer' })
-    .then(handleResponse);
+    .on('error', handleResponse);
 }
 
 export const restClient = {

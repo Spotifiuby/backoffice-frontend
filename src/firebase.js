@@ -1,35 +1,24 @@
 import { initializeApp } from "firebase/app";
 import {
-  GoogleAuthProvider,
   getAuth,
-  signInWithPopup,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  sendPasswordResetEmail,
   signOut,
 } from "firebase/auth";
-import {
-  getFirestore,
-  query,
-  getDocs,
-  collection,
-  where,
-  addDoc,
-} from "firebase/firestore";
+import {usersService} from "./services/UsersService";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD0e9H8je2neX8seSV6HybY8ewvqVLPMgI",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "spotifiuby-2c0b2.firebaseapp.com",
   projectId: "spotifiuby-2c0b2",
   storageBucket: "spotifiuby-2c0b2.appspot.com",
   messagingSenderId: "1055958726450",
-  appId: "1:1055958726450:web:cc9127d2695285ca92892b",
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
   measurementId: "G-66HGHDF67T"
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app);
 
 const logInWithEmailAndPassword = async (email, password) => {
   try {
@@ -40,12 +29,24 @@ const logInWithEmailAndPassword = async (email, password) => {
   }
 };
 
-const logout = () => {
+const signupWithEmailAndPassword = async (data) => {
+  try {
+    return await createUserWithEmailAndPassword(auth, data.email, data.password)
+    .then(session => {
+      usersService.createUser(data, () => window.location.reload());
+    });
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
+
+const logoutFirebase = () => {
   signOut(auth);
 };
 export {
   auth,
-  db,
   logInWithEmailAndPassword,
-  logout,
+  signupWithEmailAndPassword,
+  logoutFirebase,
 };
