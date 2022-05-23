@@ -218,6 +218,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$USER_HOME$/partners/api-example/shp-ingestor-api/src/main/java/processor/strategy/ClojureStrategy.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$USER_HOME$/partners/dispatcher/resources/stubs/registration.json">
           <value>
             <set />

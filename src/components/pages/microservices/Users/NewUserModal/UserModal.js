@@ -21,6 +21,7 @@ const UserModal = ({open, handleClose, content}) => {
   const [state, setState] = React.useState({});
   const [openModal, setOpenModal] = React.useState(false);
   const [initialState, setInitialState] = React.useState({});
+  const [fieldModified, setFieldModified] = React.useState({});
 
   React.useEffect(() => {
     if (content && content.id !== undefined) {
@@ -40,10 +41,12 @@ const UserModal = ({open, handleClose, content}) => {
 
   const handleInputChange = (event) => {
     setState({ ...state, [event.target.id]: event.target.value });
+    setFieldModified({ ...fieldModified, [event.target.id]: true });
   };
 
   const handleSelectChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.value });
+    setFieldModified({ ...fieldModified, [event.target.name]: true });
   };
 
   const handleOnConfirm = () => {
@@ -78,7 +81,7 @@ const UserModal = ({open, handleClose, content}) => {
                     id="first_name"
                     label="Nombre"
                     variant="outlined"
-                    value={state.first_name || initialState.first_name}
+                    value={fieldModified.first_name ? state.first_name : initialState.first_name}
                     onChange={handleInputChange}
                     fullWidth
                 />
@@ -88,7 +91,7 @@ const UserModal = ({open, handleClose, content}) => {
                     id="last_name"
                     label="Apellido"
                     variant="outlined"
-                    value={state.last_name || initialState.last_name}
+                    value={fieldModified.last_name ? state.last_name : initialState.last_name}
                     onChange={handleInputChange}
                     fullWidth
                 />
@@ -98,7 +101,7 @@ const UserModal = ({open, handleClose, content}) => {
                     id="email"
                     label="Email"
                     variant="outlined"
-                    value={state.email || initialState.email}
+                    value={fieldModified.email ? state.email : initialState.email}
                     onChange={handleInputChange}
                     disabled={content && content.email !== undefined}
                     fullWidth
