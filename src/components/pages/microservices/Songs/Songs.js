@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {
   Grid,
   makeStyles,
@@ -7,6 +7,7 @@ import {
 import styles from "./styles";
 import CustomTable from "../../../Table/Table";
 import {songsService} from "../../../../services/SongsService";
+import SongModal from "./NewSongModal/SongModal";
 
 const useStyles = makeStyles(styles);
 
@@ -29,50 +30,60 @@ const columns = [
   { id: 'genre', label: 'Genero', minWidth: 20, maxWidth: 20, sorting: false },
   { id: 'status', label: 'Estado', minWidth: 20, maxWidth: 20, sorting: false },
   { id: 'dateCreated', label: 'Fecha Creacion', minWidth: 20, maxWidth: 20, sorting: false },
-  { id: 'actions', label: '', type: 'menu', minWidth: 5, maxWidth: 5 },
+  { id: 'actions', label: '', type: 'menu', minWidth: 50, maxWidth: 50 },
 ];
 
 const Songs = () => {
   const classes = useStyles();
   const [rows, setRows] = React.useState([]);
   const [openModal, setOpenModal] = React.useState(false);
+  const [modalContent, setModalContent] = React.useState({});
 
-  const handleClose = (changed = false) => {
+  const handleClose = useCallback(() => {
     setOpenModal(false);
-    /*if (changed) {
-      window.location.reload();
-    }*/
-  };
+    setModalContent({});
+  }, [openModal, modalContent]);
 
   function buildActions(result) {
     return [
       {
         name: 'Editar',
-        //'action': () => handleOpen({id: result.id}, 'edit')
+        'action': () => handleOpen(result)
       },
       {
-        name: 'Suspender'
+        name: result.status && result.status !== 'inactive' ? 'Suspender' : 'Habilitar',
+        'action': () => handleSetInactive(result, result.status && result.status !== 'inactive' ? 'inactive' : 'active')
       }
     ]
   }
 
   React.useEffect(() => {
     songsService.getSongs(songs => {
-      let resultRows = songs.map(song => createData(song.id, song.name, song.artists, song.genre, song.status, song.date_created, buildActions(song)))
+      let resultRows = songs.map(song => createData(song.id, song.name, song.artists, song.genre, song.status, new Date(song.date_created).toLocaleString("es-ES"), buildActions(song)))
       setRows(resultRows);
     })
   }, []);
+
+  const handleOpen = (content) => {
+    setModalContent(content);
+    setOpenModal(true);
+  };
+
+  const handleSetInactive = (result, value) => {
+    songsService.updateSong(result.id, { status: value }, () => window.location.reload());
+  };
 
   return (
       <React.Fragment>
         <Grid container className={classes.tableHeader}>
           <Grid item sm={12} md={6}>
             <Typography variant="h5" component="h5">
-              Usuarios
+              Canciones
             </Typography>
           </Grid>
         </Grid>
         <CustomTable rows={rows} columns={columns} />
+        <SongModal handleClose={handleClose} open={openModal} content={modalContent}/>
       </React.Fragment>
   );
 }

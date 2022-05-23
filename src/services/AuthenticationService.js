@@ -15,6 +15,12 @@ export const authenticationService = {
   get currentUserValue () { return currentUserSubject.value }
 };
 
+const storageName = "currentUser";
+
+function setItemToStorage(body) {
+  localStorage.setItem(storageName, JSON.stringify(body));
+}
+
 function login(username, password) {
   return superagent.post(`${process.env.REACT_APP_SERVER_BASE_URI}/api/login`)
     .send(JSON.stringify({ email: username, password }))
@@ -22,7 +28,7 @@ function login(username, password) {
     .then(handleResponse)
     .then(user => {
       // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem('currentUser', JSON.stringify(user.body));
+      setItemToStorage(user.body);
       currentUserSubject.next(user.body);
 
       return user;
@@ -30,17 +36,22 @@ function login(username, password) {
 }
 
 function loginFirebase(user) {
-    localStorage.setItem('currentUser', JSON.stringify(user));
-    currentUserSubject.next(user);
+  setItemToStorage(user);
+  currentUserSubject.next(user);
 
-    return user;
+  return user;
 }
 
 async function isValidSession() {
-  return superagent.post(`${process.env.REACT_APP_SERVER_BASE_URI}/api/validate-session`)
+  return superagent.get(`${process.env.REACT_APP_GATEWAY_URI}/users-api/users/${currentUserSubject.value.email}`)
     .send(JSON.stringify({ email: currentUserSubject.value.email }))
     .auth(currentUserSubject.value.token, { type:'bearer' })
-    .set('Content-Type', 'application/json');
+    .set("x-api-key", process.env.REACT_APP_API_KEY)
+    .set('Content-Type', 'application/json')
+    .then(user => {
+      setItemToStorage({...currentUserSubject.value, ...user.body});
+      return user;
+    });
 }
 
 function logout() {

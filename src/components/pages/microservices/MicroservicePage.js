@@ -6,7 +6,7 @@ import {
   Drawer,
   IconButton, List, ListItem, ListItemIcon, ListItemText,
   makeStyles, Menu, MenuItem,
-  Toolbar,
+  Toolbar, Typography,
 } from "@material-ui/core";
 import {AccountCircle} from "@material-ui/icons";
 import {Link, Outlet} from "react-router-dom";
@@ -67,7 +67,14 @@ const MicroservicePage = () => {
           >
             <Toolbar>
               <div className={classes.grow} />
+              <Typography style={{marginLeft: '12vh'}} variant="h6" component="div" align="center" noWrap>
+                <img alt="complex" src='logo.png' className={classes.spotifiubyLogo}/>
+              </Typography>
+              <div className={classes.grow} />
               <div className={classes.sectionDesktop}>
+                <Typography className={classes.title} variant="h6" component="div" align="center" noWrap>
+                  Hola {authenticationService.currentUserValue.first_name} !
+                </Typography>
                 <IconButton
                     edge="end"
                     aria-label="account of current user"

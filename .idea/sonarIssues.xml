@@ -123,6 +123,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/components/pages/microservices/Songs/NewSongModal/SongModal.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/components/pages/microservices/Songs/NewSongModal/styles.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/components/pages/microservices/Songs/Songs.js">
           <value>
             <set />
@@ -134,6 +144,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/components/pages/microservices/Users/NewUserModal/UserModal.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/components/pages/microservices/Users/NewUserModal/styles.js">
           <value>
             <set />
           </value>
@@ -263,6 +278,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/App.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/LandingPage/LandingPage.js">
           <value>
             <set />
@@ -273,7 +293,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/NomenclatorType/NomenclatorType.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/MicroservicePage.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/styles.js">
           <value>
             <set />
           </value>

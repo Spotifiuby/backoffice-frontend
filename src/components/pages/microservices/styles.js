@@ -51,6 +51,14 @@ const styles = theme => ({
     margin: theme.spacing(1),
     minWidth: 160,
   },
+  spotifiubyLogo: {
+    width: "100%",
+    height: "64px",
+    "object-fit": "cover"
+  },
+  title : {
+    margin: theme.spacing(1)
+  }
 })
 
 export default styles;

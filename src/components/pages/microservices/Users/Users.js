@@ -84,7 +84,6 @@ const Users = () => {
   };
 
   const handleSetInactive = (result, value) => {
-    console.log(value);
     usersService.updateUser(result.email, { is_active: value }, () => window.location.reload());
   };
 

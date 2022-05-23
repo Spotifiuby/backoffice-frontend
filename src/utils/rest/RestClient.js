@@ -6,6 +6,7 @@ function get(path, opts) {
   return superagent
     .get(path)
     .set("Accept", "application/json")
+    .set("x-api-key", process.env.REACT_APP_API_KEY)
     .auth(opts && opts.auth && authenticationService.currentUserValue.token, { type:'bearer' })
     .on('error', handleResponse);
 }
@@ -15,6 +16,7 @@ function post(path, opts) {
     .send(JSON.stringify(opts && opts.data))
     .set("Accept", "application/json")
     .set('Content-Type', 'application/json')
+    .set("x-api-key", process.env.REACT_APP_API_KEY)
     .auth(opts && opts.auth && authenticationService.currentUserValue.token, { type:'bearer' })
     .on('error', handleResponse);
 }
@@ -24,6 +26,7 @@ function put(path, opts) {
     .send(JSON.stringify(opts && opts.data))
     .set("Accept", "application/json")
     .set('Content-Type', 'application/json')
+    .set("x-api-key", process.env.REACT_APP_API_KEY)
     .auth(opts && opts.auth && authenticationService.currentUserValue.token, { type:'bearer' })
     .on('error', handleResponse);
 }
