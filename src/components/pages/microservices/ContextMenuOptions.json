@@ -8,5 +8,10 @@
     "id": "songs",
     "label": "Canciones",
     "path": "songs"
+  },
+  {
+    "id": "metrics",
+    "label": "Métricas",
+    "path": "metrics"
   }
 ]
