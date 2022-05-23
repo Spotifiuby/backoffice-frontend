@@ -66,10 +66,21 @@ function _mapEntityBy(objs, attr) {
 function _getOptions(type = "", title = "", data = []) {
     return {
         chart: {
-            type: type
+            type: type,
+            plotBackgroundColor: null,
         },
         title: {
             text: title
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true
+                },
+                showInLegend: true
+            }
         },
         series: [
             {

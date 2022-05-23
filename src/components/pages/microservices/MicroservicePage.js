@@ -11,8 +11,9 @@ import {
 import {AccountCircle} from "@material-ui/icons";
 import {Link, Outlet} from "react-router-dom";
 import ContextMenuOptions from "./ContextMenuOptions.json";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+import PeopleIcon from "@material-ui/icons/People";
+import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import AssessmentIcon from '@mui/icons-material/Assessment';
 import {authenticationService} from "../../../services/AuthenticationService";
 
 const useStyles = makeStyles(styles);
@@ -47,14 +48,15 @@ const MicroservicePage = () => {
   );
 
   const menu = () => {
-    return <List>
-      {ContextMenuOptions.map((option, index) => (
-          <ListItem button key={option.id} component={Link} to={`/${option.path}`}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={option.label} />
-          </ListItem>
-      ))}
-    </List>
+      const icons = [<PeopleIcon/>, <LibraryMusicIcon/>, <AssessmentIcon/>,]
+      return <List>
+          {ContextMenuOptions.map((option, index) => (
+              <ListItem button key={option.id} component={Link} to={`/${option.path}`}>
+                  <ListItemIcon>{icons[index]}</ListItemIcon>
+                  <ListItemText primary={option.label}/>
+              </ListItem>
+          ))}
+      </List>
   }
 
   return (
