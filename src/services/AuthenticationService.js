@@ -50,7 +50,7 @@ async function isValidSession() {
     .set('Content-Type', 'application/json')
     .then(user => {
       if (user.body.user_type !== 'admin') {
-        logoutFirebase();
+        logout();
         return;
       }
       setItemToStorage({...currentUserSubject.value, ...user.body});
