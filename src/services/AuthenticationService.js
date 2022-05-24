@@ -49,7 +49,7 @@ async function isValidSession() {
     .set("x-api-key", process.env.REACT_APP_API_KEY)
     .set('Content-Type', 'application/json')
     .then(user => {
-      if (user.user_type !== 'admin') {
+      if (user.body.user_type !== 'admin') {
         logoutFirebase();
         return;
       }
