@@ -8,17 +8,21 @@ const Metrics = () => {
     const pieChart1 = useRef(null)
     const pieChart2 = useRef(null)
     const pieChart3 = useRef(null)
+    const pieChart4 = useRef(null)
+    const pieChart5 = useRef(null)
 
     React.useEffect(() => {
         songsService.getSongs(null, songs => {
             pieChart1.current.chart.update(_getOptions("pie", "Songs by Genre", _mapEntityBy(songs, "genre")))
             pieChart2.current.chart.update(_getOptions("pie", "Songs by Artist", _mapEntityBy(songs, "artist")))
+            pieChart4.current.chart.update(_getOptions("pie", "Songs by Status", _mapEntityBy(songs, "status")))
         })
     }, []);
 
     React.useEffect(() => {
-        usersService.getUsers(users => {
+        usersService.getUsers(null, users => {
             pieChart3.current.chart.update(_getOptions("pie", "Users by Status", _mapEntityBy(users, "status")))
+            pieChart5.current.chart.update(_getOptions("pie", "Users by Type", _mapEntityBy(users, "user_type")))
         })
     }, []);
 
@@ -27,7 +31,9 @@ const Metrics = () => {
             <div>
                 <HighchartsReact ref={pieChart1} highcharts={Highcharts} options={_getOptions()}/>
                 <HighchartsReact ref={pieChart2} highcharts={Highcharts} options={_getOptions()}/>
+                <HighchartsReact ref={pieChart4} highcharts={Highcharts} options={_getOptions()}/>
                 <HighchartsReact ref={pieChart3} highcharts={Highcharts} options={_getOptions()}/>
+                <HighchartsReact ref={pieChart5} highcharts={Highcharts} options={_getOptions()}/>
             </div>
         </React.Fragment>
     );
@@ -40,7 +46,7 @@ function _mapEntityBy(objs, attr) {
             obj["artist"] = obj["artists"][0]
         }
         if (obj["is_active"] != null) {
-            obj["status"] = obj["is_active"]? "active" : "inactive"
+            obj["status"] = obj["is_active"] ? "active" : "inactive"
         }
 
         if (aux[obj[attr]] != null) {
@@ -75,6 +81,9 @@ function _getOptions(type = "", title = "", data = []) {
                 },
                 showInLegend: true
             }
+        },
+        tooltip: {
+            pointFormat: '{point.percentage:.1f}%<br>{point.y}'
         },
         series: [
             {
