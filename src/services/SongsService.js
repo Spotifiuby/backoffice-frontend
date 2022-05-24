@@ -1,7 +1,8 @@
 import { restClient } from "../utils/rest/RestClient";
 
-function getSongs(callback) {
-  restClient.get(`${process.env.REACT_APP_GATEWAY_URI}/songs-api/songs`, {auth: true})
+function getSongs(searchValue, callback) {
+  const query = searchValue && { q: searchValue };
+  restClient.get(`${process.env.REACT_APP_GATEWAY_URI}/songs-api/songs`, {auth: true, query})
   .then(res => {
     if (res && res.body && res.body.length !== 0) {
       callback(res.body);

@@ -1,7 +1,12 @@
 import { restClient } from "../utils/rest/RestClient";
+import {Utils} from "../utils/Utils";
 
-function getUsers(callback) {
-  restClient.get(`${process.env.REACT_APP_GATEWAY_URI}/users-api/users`, {auth: true})
+function getUsers(params, callback) {
+  const query = params && Object.keys(params).reduce((prev, current) => {
+    prev[Utils.fromCamelToSnake(current)] = params[current];
+    return prev;
+  }, {});
+  restClient.get(`${process.env.REACT_APP_GATEWAY_URI}/users-api/users`, {auth: true, query})
   .then(res => {
     if (res && res.body && res.body.length && res.body.length !== 0) {
       callback(res.body);

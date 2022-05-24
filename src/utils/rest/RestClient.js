@@ -5,6 +5,7 @@ import {handleResponse} from "../../helpers/HandleResponse";
 function get(path, opts) {
   return superagent
     .get(path)
+    .query(opts.query)
     .set("Accept", "application/json")
     .set("x-api-key", process.env.REACT_APP_API_KEY)
     .set("x-user-id", authenticationService.currentUserValue.email)

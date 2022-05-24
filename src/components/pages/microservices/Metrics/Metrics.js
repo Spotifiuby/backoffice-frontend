@@ -1,14 +1,8 @@
 import React, {useRef} from 'react';
-import {
-    makeStyles
-} from "@material-ui/core";
-import styles from "./styles";
 import Highcharts from 'highcharts/highstock'
 import HighchartsReact from 'highcharts-react-official';
 import {songsService} from "../../../../services/SongsService";
 import {usersService} from "../../../../services/UsersService";
-
-const useStyles = makeStyles(styles);
 
 const Metrics = () => {
     const pieChart1 = useRef(null)
@@ -16,7 +10,7 @@ const Metrics = () => {
     const pieChart3 = useRef(null)
 
     React.useEffect(() => {
-        songsService.getSongs(songs => {
+        songsService.getSongs(null, songs => {
             pieChart1.current.chart.update(_getOptions("pie", "Songs by Genre", _mapEntityBy(songs, "genre")))
             pieChart2.current.chart.update(_getOptions("pie", "Songs by Artist", _mapEntityBy(songs, "artist")))
         })
@@ -41,7 +35,7 @@ const Metrics = () => {
 
 function _mapEntityBy(objs, attr) {
     let aux = {}
-    objs.map(obj => {
+    objs.forEach(obj => {
         if (obj["artists"] != null) {
             obj["artist"] = obj["artists"][0]
         }

@@ -39,7 +39,7 @@ function loginFirebase(user) {
   setItemToStorage(user);
   currentUserSubject.next(user);
 
-  return user;
+  return isValidSession();
 }
 
 async function isValidSession() {
@@ -49,6 +49,10 @@ async function isValidSession() {
     .set("x-api-key", process.env.REACT_APP_API_KEY)
     .set('Content-Type', 'application/json')
     .then(user => {
+      if (user.user_type !== 'admin') {
+        logoutFirebase();
+        return;
+      }
       setItemToStorage({...currentUserSubject.value, ...user.body});
       return user;
     });

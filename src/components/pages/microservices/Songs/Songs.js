@@ -1,6 +1,7 @@
 import React, {useCallback} from 'react';
 import {
-  Grid,
+  FormControl,
+  Grid, Input, InputAdornment, InputLabel,
   makeStyles,
   Typography
 } from "@material-ui/core";
@@ -8,6 +9,8 @@ import styles from "./styles";
 import CustomTable from "../../../Table/Table";
 import {songsService} from "../../../../services/SongsService";
 import SongModal from "./NewSongModal/SongModal";
+import IconButton from "@material-ui/core/IconButton";
+import {Search} from "@material-ui/icons";
 
 const useStyles = makeStyles(styles);
 
@@ -38,11 +41,12 @@ const Songs = () => {
   const [rows, setRows] = React.useState([]);
   const [openModal, setOpenModal] = React.useState(false);
   const [modalContent, setModalContent] = React.useState({});
+  const [search, setSearch] = React.useState("");
 
   const handleClose = useCallback(() => {
     setOpenModal(false);
     setModalContent({});
-  }, [openModal, modalContent]);
+  }, []);
 
   function buildActions(result) {
     return [
@@ -55,10 +59,10 @@ const Songs = () => {
         'action': () => handleSetInactive(result, result.status && result.status !== 'inactive' ? 'inactive' : 'active')
       }
     ]
-  }
+  };
 
   React.useEffect(() => {
-    songsService.getSongs(songs => {
+    songsService.getSongs(null, songs => {
       let resultRows = songs.map(song => createData(song.id, song.name, song.artists, song.genre, song.status, new Date(song.date_created).toLocaleString("es-ES"), buildActions(song)))
       setRows(resultRows);
     })
@@ -73,6 +77,17 @@ const Songs = () => {
     songsService.updateSong(result.id, { status: value }, () => window.location.reload());
   };
 
+  const handleOnChangeSearch = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const handleOnSearch = () => {
+    songsService.getSongs(search, songs => {
+      let resultRows = songs.map(song => createData(song.id, song.name, song.artists, song.genre, song.status, new Date(song.date_created).toLocaleString("es-ES"), buildActions(song)))
+      setRows(resultRows);
+    })
+  };
+
   return (
       <React.Fragment>
         <Grid container className={classes.tableHeader}>
@@ -80,6 +95,29 @@ const Songs = () => {
             <Typography variant="h5" component="h5">
               Canciones
             </Typography>
+          </Grid>
+          <Grid item sm={12} md={6}>
+          </Grid>
+          <Grid item sm={12} md={6}>
+            <FormControl >
+              <InputLabel htmlFor="search-songs">Buscar</InputLabel>
+              <Input
+                  id="search-songs"
+                  type="text"
+                  value={search}
+                  onChange={handleOnChangeSearch}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleOnSearch}
+                      >
+                        <Search />
+                      </IconButton>
+                    </InputAdornment>
+                  }
+              />
+            </FormControl>
           </Grid>
         </Grid>
         <CustomTable rows={rows} columns={columns} />

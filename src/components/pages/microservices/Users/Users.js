@@ -9,6 +9,9 @@ import styles from "./styles";
 import CustomTable from "../../../Table/Table";
 import {usersService} from "../../../../services/UsersService";
 import UserModal from "./NewUserModal/UserModal";
+import {useSearchParams} from "react-router-dom";
+import UsersFiltersModal from "./UsersFiltersModal/UsersFiltersModal";
+import {Utils} from "../../../../utils/Utils";
 
 const useStyles = makeStyles(styles);
 
@@ -39,12 +42,15 @@ const Users = () => {
   const [rows, setRows] = React.useState([]);
   const [openModal, setOpenModal] = React.useState({
     new: false,
+    filters: false,
   });
   const [modalContent, setModalContent] = React.useState({});
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleClose = useCallback(() => {
     setOpenModal({
       new: false,
+      filters: false,
     });
     setModalContent({});
   }, [openModal, modalContent]);
@@ -66,8 +72,18 @@ const Users = () => {
     ]
   }
 
+  const getQueryObject = () => {
+    return Utils.usersFilters.reduce((prev, current) => {
+      if (searchParams.get(current)) {
+        prev[current] = searchParams.get(current);
+      }
+      return prev;
+    }, {})
+  };
+
   React.useEffect(() => {
-    usersService.getUsers(users => {
+    const query = getQueryObject();
+    usersService.getUsers(query, users => {
       let resultRows = users.map(user => createData(user.id, user.email, user.first_name, user.last_name, user.user_type, user.is_active, buildActions(user)))
       setRows(resultRows);
     })
@@ -93,11 +109,20 @@ const Users = () => {
 
   return (
       <React.Fragment>
-        <Grid container className={classes.tableHeader}>
+        <Grid container className={classes.tableHeader} spacing={2}>
           <Grid item sm={12} md={6}>
             <Typography variant="h5" component="h5">
               Usuarios
             </Typography>
+          </Grid>
+          <Grid item sm={12} md={6} >
+          </Grid>
+          <Grid item sm={12} md={6} >
+            <Grid container>
+              <Button variant="contained"  color="primary" onClick={() => handleOpen(null, "filters")}>
+                Filtrar
+              </Button>
+            </Grid>
           </Grid>
           <Grid item sm={12} md={6} >
             <Grid container justifyContent="flex-end">
@@ -112,6 +137,7 @@ const Users = () => {
                     handleClose={handleClose}
                     content={modalContent.new}
         />
+        <UsersFiltersModal content={getQueryObject()} open={openModal.filters} handleClose={handleClose}/>
       </React.Fragment>
   );
 }

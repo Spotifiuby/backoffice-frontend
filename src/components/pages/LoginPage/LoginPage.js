@@ -31,10 +31,11 @@ const LoginPage = () => {
     }
     if (user) {
       user.getIdToken().then(accessToken => {
-        authenticationService.loginFirebase({email: user.email, token: accessToken});
-
-        const { from } = window.location.state || { from: { pathname: "/" } };
-        history(from);
+        authenticationService.loginFirebase({email: user.email, token: accessToken})
+        .then(() => {
+          const { from } = window.location.state || { from: { pathname: "/" } };
+          history(from);
+        });
       })
     }
   }, [user, loading])

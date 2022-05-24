@@ -118,6 +118,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/components/pages/microservices/Metrics/Metrics.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/components/pages/microservices/MicroservicePage.js">
           <value>
             <set />
@@ -163,6 +168,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/components/pages/microservices/Users/UsersFiltersModal/UsersFiltersModal.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/components/pages/microservices/Users/styles.js">
           <value>
             <set />
@@ -204,6 +214,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/setupProxy.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/utils/Utils.js">
           <value>
             <set />
           </value>
