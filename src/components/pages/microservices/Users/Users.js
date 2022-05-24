@@ -62,11 +62,11 @@ const Users = () => {
         name: 'Editar',
         'action': () => handleOpen(result, 'new')
       },
-      {
+      result.email && result.email !== authenticationService.currentUserValue.email && {
         name: result.user_type !== 'admin' ? 'Hacer administrador' : 'Revocar permisos',
         'action': () => handleGrantAdmin(result, result.user_type !== 'admin' ? 'admin' : 'listener')
       },
-      result.email && result.email !== authenticationService.currentUserValue.email && {
+      {
         name: result.is_active ? 'Suspender' : 'Activar',
         'action': () => handleSetInactive(result, !result.is_active)
       }
