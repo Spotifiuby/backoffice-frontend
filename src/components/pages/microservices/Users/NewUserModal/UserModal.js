@@ -113,6 +113,7 @@ const UserModal = ({open, handleClose, content}) => {
                     id="password"
                     label="Contraseña"
                     variant="outlined"
+                    type="password"
                     value={state.password}
                     onChange={handleInputChange}
                     fullWidth
