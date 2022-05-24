@@ -12,6 +12,7 @@ import UserModal from "./NewUserModal/UserModal";
 import {useSearchParams} from "react-router-dom";
 import UsersFiltersModal from "./UsersFiltersModal/UsersFiltersModal";
 import {Utils} from "../../../../utils/Utils";
+import {authenticationService} from "../../../../services/AuthenticationService";
 
 const useStyles = makeStyles(styles);
 
@@ -65,7 +66,7 @@ const Users = () => {
         name: result.user_type !== 'admin' ? 'Hacer administrador' : 'Revocar permisos',
         'action': () => handleGrantAdmin(result, result.user_type !== 'admin' ? 'admin' : 'listener')
       },
-      {
+      result.email && result.email !== authenticationService.currentUserValue.email && {
         name: result.is_active ? 'Suspender' : 'Activar',
         'action': () => handleSetInactive(result, !result.is_active)
       }
