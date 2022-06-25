@@ -13,6 +13,7 @@ import {Link, Outlet} from "react-router-dom";
 import ContextMenuOptions from "./ContextMenuOptions.json";
 import PeopleIcon from "@material-ui/icons/People";
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import AlbumIcon from '@mui/icons-material/Album';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import {authenticationService} from "../../../services/AuthenticationService";
 
@@ -48,7 +49,7 @@ const MicroservicePage = () => {
   );
 
   const menu = () => {
-      const icons = [<PeopleIcon/>, <LibraryMusicIcon/>, <AssessmentIcon/>,]
+      const icons = [<PeopleIcon/>, <LibraryMusicIcon/>, <AlbumIcon/>, <AssessmentIcon/>,]
       return <List>
           {ContextMenuOptions.map((option, index) => (
               <ListItem button key={option.id} component={Link} to={`/${option.path}`}>

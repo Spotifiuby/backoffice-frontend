@@ -10,6 +10,11 @@
     "path": "songs"
   },
   {
+    "id": "artists",
+    "label": "Artistas",
+    "path": "artists"
+  },
+  {
     "id": "metrics",
     "label": "Métricas",
     "path": "metrics"
