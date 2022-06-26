@@ -233,6 +233,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$USER_HOME$/partners/api-example/shp-ingestor-api/geojsonDiff.json">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$USER_HOME$/partners/api-example/shp-ingestor-api/src/main/java/processor/strategy/ClojureStrategy.java">
           <value>
             <set />
@@ -313,12 +318,117 @@
             <set />
           </value>
         </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/LoginPage/styles.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/CommentsModal/CommentsModal.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/ContextMenuOptions.json">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/Nomenclator/Modal/EditNomenclatorModal/EditNomenclatorModal.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/Nomenclator/Modal/EditNomenclatorModal/styles.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/Nomenclator/Modal/EditStructureModal/EditStructureModal.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/Nomenclator/Modal/EditStructureModal/styles.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/Nomenclator/Modal/NewNomenclatorModal/NewNomenclatorModal.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/Nomenclator/Modal/NewNomenclatorModal/NewNomenclatorModalContext.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/Nomenclator/Modal/NewNomenclatorModal/styles.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/Nomenclator/Modal/NomenclatorDetail/NomenclatorDetail.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/Nomenclator/Modal/NomenclatorLevels/NomenclatorLevels.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/Nomenclator/Modal/NomenclatorLevels/styles.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/Nomenclator/Modal/NomenclatorStructure/NomenclatorStructure.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/Nomenclator/Nomenclator.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/NomenclatorType/ActiveNomenclatorTypeTab/ActiveNomenclatorTypeTab.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/NomenclatorType/ActiveNomenclatorTypeTab/styles.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/NomenclatorType/NewNomenclatorTypeModal/NomenclatorTypeModal.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/NomenclatorType/NomenclatorType.js">
           <value>
             <set />
           </value>
         </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/NomenclatorType/PendingNomenclatorTypeTab/PendingNomenclatorTypeTab.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/Anyn/NomenclatorType/styles.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/MicroservicePage.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/components/pages/microservices/MicroservicesContext.js">
           <value>
             <set />
           </value>
@@ -333,7 +443,57 @@
             <set />
           </value>
         </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/helpers/AlertReducer.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/helpers/NewNomenclatorReducer.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/helpers/NomenclatorReducer.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/helpers/alertReducer.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/services/AuthenticationService.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/services/NomenclatorService.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/services/NomenclatorTypeService.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/services/StructureService.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/utils/Utils.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tp_prof/refiubizate-frontend/src/utils/rest/RestClient.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="/fragment.java">
           <value>
             <set />
           </value>

@@ -1,6 +1,6 @@
 const styles = theme => ({
   root: {
-    height: '200vh',
+    height: '100vh',
   },
   paper: {
     margin: theme.spacing(8, 4),
@@ -14,9 +14,8 @@ const styles = theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundColor:
         theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-    backgroundSize: 'fit',
-    backgroundPosition: '25% center',
-    backgroundAttachment: 'fixed'
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
   },
   avatar: {
     margin: theme.spacing(1),
