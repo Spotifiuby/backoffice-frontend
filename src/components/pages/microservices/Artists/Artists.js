@@ -59,7 +59,16 @@ const Artists = () => {
 
   React.useEffect(() => {
     artistsService.getArtists(null, artists => {
-      let resultRows = artists.map(artist => createData(artist.id, artist.name, artist.user_id, artist.subscription_level, buildActions(artist)))
+      const subscriptions = ["Free", "Basic", "Pro", "Premium"];
+      let resultRows = artists.map(artist => {
+        let subscription = subscriptions[artist.subscription_level];
+        if (artist.subscription_level >= subscriptions.length) {
+          subscription = subscriptions[subscriptions.length - 1];
+        } else if (artist.subscription_level < 0) {
+          subscription = subscriptions[0];
+        }
+        return createData(artist.id, artist.name, artist.user_id, subscription, buildActions(artist))
+      })
       setRows(resultRows);
     })
   }, []);

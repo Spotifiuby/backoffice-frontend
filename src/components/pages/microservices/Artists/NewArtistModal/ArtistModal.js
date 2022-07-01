@@ -10,6 +10,7 @@ import {
   makeStyles, TextField,
   Typography
 } from "@material-ui/core";
+import MenuItem from '@mui/material/MenuItem';
 import styles from "./styles";
 import {artistsService} from "../../../../../services/ArtistsService";
 
@@ -39,8 +40,9 @@ const ArtistModal = ({open, handleClose, content}) => {
   }, [content]);
 
   const handleInputChange = (event) => {
-    setState({ ...state, [event.target.id]: event.target.value });
-    setFieldModified({ ...fieldModified, [event.target.id]: true });
+    console.log(event.target, event.target.value)
+    setState({ ...state, [event.target.name]: event.target.value });
+    setFieldModified({ ...fieldModified, [event.target.name]: true });
   };
 
   // const handleInputMultiValue = (event) => {
@@ -54,6 +56,25 @@ const ArtistModal = ({open, handleClose, content}) => {
     }
   };
 
+  const subscriptions = [
+    {
+      value: 0,
+      label: 'Free',
+    },
+    {
+      value: 1,
+      label: 'Basic',
+    },
+    {
+      value: 2,
+      label: 'Pro',
+    },
+    {
+      value: 3,
+      label: 'Premium',
+    },
+  ];
+  
   return (
       <React.Fragment>
         <Dialog
@@ -75,7 +96,7 @@ const ArtistModal = ({open, handleClose, content}) => {
               <Grid xs={6} md={6} item>
                 <TextField
                     required
-                    id="id"
+                    name="id"
                     label="ID"
                     variant="outlined"
                     value={fieldModified.id ? state.id : initialState.id}
@@ -86,7 +107,7 @@ const ArtistModal = ({open, handleClose, content}) => {
               </Grid>
               <Grid xs={12} md={6} item>
                 <TextField
-                    id="user_id"
+                    name="user_id"
                     label="Usuario"
                     variant="outlined"
                     value={fieldModified.user_id ? state.user_id : initialState.user_id}
@@ -97,7 +118,7 @@ const ArtistModal = ({open, handleClose, content}) => {
               </Grid>
               <Grid xs={12} md={6} item>
                 <TextField
-                    id="name"
+                    name="name"
                     label="Titulo"
                     variant="outlined"
                     value={fieldModified.name ? state.name : initialState.name}
@@ -107,14 +128,20 @@ const ArtistModal = ({open, handleClose, content}) => {
               </Grid>
               <Grid xs={12} md={6} item>
                 <TextField
-                    id="subscription_level"
+                    name="subscription_level"
+                    select
                     label="Subscripcion"
                     variant="outlined"
                     value={fieldModified.subscription_level ? state.subscription_level : initialState.subscription_level}
-                    type="number"
                     onChange={handleInputChange}
                     fullWidth
-                />
+                > 
+                  {subscriptions.map((option) => (
+                    <MenuItem id={option.value} key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </TextField>
               </Grid>
             </Grid>
           </DialogContent>
